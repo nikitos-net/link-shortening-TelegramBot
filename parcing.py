@@ -19,8 +19,11 @@ def get_cut_url(url):
 
     r = requests.get(URL_TEMPLATE)
     tree = html.fromstring(r.text)
-
-    url = tree.xpath('//a[@id="result_url"]/text()')[0]
-    driver.close()
-    return url
-
+    try:
+        url = tree.xpath('//span[@class="shortener__short-link-text "]/text()')[0]
+        qr_url = tree.xpath('//img[@class="qr-code qr-code_visible"]/@src')[0]
+        driver.close()
+        return [url, qr_url]
+    except BaseException:
+        driver.close()
+        return []
