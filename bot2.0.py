@@ -3,7 +3,7 @@ import val
 import qrcode
 import parcing
 from telebot import types
-bot = telebot.TeleBot('5724705081:AAF78TW5FNolA_e-t2PhiTR4i_1dHV8Ak0k')
+bot = telebot.TeleBot()
 
 def start_button():
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard = True, one_time_keyboard = True)
